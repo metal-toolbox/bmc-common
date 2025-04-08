@@ -2,6 +2,15 @@
 // server hardware and its component attributes between libraries/tools.
 package common
 
+type Component interface {
+	GetSerial() string
+	GetVendor() string
+	GetModel() string
+	GetProductName() string
+	GetFirmware() *Firmware
+	IsNil() bool
+}
+
 // Common holds attributes shared by all components
 type Common struct {
 	Oem          bool              `json:"oem"`
@@ -17,6 +26,26 @@ type Common struct {
 	Metadata     map[string]string `json:"metadata,omitempty"`
 	Firmware     *Firmware         `json:"firmware,omitempty"`
 	Status       *Status           `json:"status,omitempty"`
+}
+
+func (c *Common) GetSerial() string {
+	return c.Serial
+}
+
+func (c *Common) GetVendor() string {
+	return c.Vendor
+}
+
+func (c *Common) GetModel() string {
+	return c.Model
+}
+
+func (c *Common) GetProductName() string {
+	return c.ProductName
+}
+
+func (c *Common) GetFirmware() *Firmware {
+	return c.Firmware
 }
 
 // Device type is composed of various components
