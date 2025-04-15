@@ -8,7 +8,6 @@ type Component interface {
 	GetModel() string
 	GetProductName() string
 	GetFirmware() *Firmware
-	IsNil() bool
 }
 
 // Common holds attributes shared by all components
