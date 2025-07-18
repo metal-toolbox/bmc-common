@@ -3,10 +3,14 @@
 package common
 
 type Component interface {
-	GetSerial() string
+	GetDescription() string
 	GetVendor() string
 	GetModel() string
+	GetSerial() string
 	GetProductName() string
+	GetLogicalName() string
+	GetCapabilities() []*Capability
+	GetMetadata() map[string]string
 	GetFirmware() *Firmware
 	IsNil() bool
 }
@@ -28,8 +32,8 @@ type Common struct {
 	Status       *Status           `json:"status,omitempty"`
 }
 
-func (c *Common) GetSerial() string {
-	return c.Serial
+func (c *Common) GetDescription() string {
+	return c.Description
 }
 
 func (c *Common) GetVendor() string {
@@ -40,8 +44,24 @@ func (c *Common) GetModel() string {
 	return c.Model
 }
 
+func (c *Common) GetSerial() string {
+	return c.Serial
+}
+
 func (c *Common) GetProductName() string {
 	return c.ProductName
+}
+
+func (c *Common) GetLogicalName() string {
+	return c.LogicalName
+}
+
+func (c *Common) GetCapabilities() []*Capability {
+	return c.Capabilities
+}
+
+func (c *Common) GetMetadata() map[string]string {
+	return c.Metadata
 }
 
 func (c *Common) GetFirmware() *Firmware {
@@ -126,9 +146,8 @@ type GPU struct {
 type Enclosure struct {
 	Common
 
-	ID          string    `json:"id,omitempty"`
-	ChassisType string    `json:"chassis_type,omitempty"`
-	Firmware    *Firmware `json:"firmware,omitempty"`
+	ID          string `json:"id,omitempty"`
+	ChassisType string `json:"chassis_type,omitempty"`
 }
 
 // TPM component
