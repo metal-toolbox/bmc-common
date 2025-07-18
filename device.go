@@ -12,6 +12,7 @@ type Component interface {
 	GetCapabilities() []*Capability
 	GetMetadata() map[string]string
 	GetFirmware() *Firmware
+	GetStatus() string
 	IsNil() bool
 }
 
@@ -66,6 +67,10 @@ func (c *Common) GetMetadata() map[string]string {
 
 func (c *Common) GetFirmware() *Firmware {
 	return c.Firmware
+}
+
+func (c *Common) GetStatus() *Status {
+	return c.Status
 }
 
 // Device type is composed of various components
