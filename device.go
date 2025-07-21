@@ -12,8 +12,7 @@ type Component interface {
 	GetCapabilities() []*Capability
 	GetMetadata() map[string]string
 	GetFirmware() *Firmware
-	GetStatus() string
-	IsNil() bool
+	GetStatus() *Status
 }
 
 // Common holds attributes shared by all components
